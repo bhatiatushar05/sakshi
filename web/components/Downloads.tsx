@@ -15,6 +15,12 @@ const FILES = [
     href: `${ASSET_BASE}/conservation_scores.csv`,
   },
   {
+    name: "dataset_audit.csv",
+    desc: "Record-level source, length, ambiguity, and India-description audit",
+    icon: FileCode,
+    href: `${ASSET_BASE}/dataset_audit.csv`,
+  },
+  {
     name: "conservation_plot.png",
     desc: "Publication-quality conservation figure",
     icon: FileImage,

@@ -13,3 +13,5 @@ web/out/
 # IDE
 .idea/
 .vscode/
+.vercel
+.env*.local

@@ -66,8 +66,8 @@ export function PipelineSteps({ data }: { data: AnalysisData }) {
       <div className="mb-12">
         <h2 className="section-title">Analysis pipeline</h2>
         <p className="section-sub mt-2">
-          Six modular steps — from GenBank download to publication-style figures.
-          All steps completed on real Indian HIV-1 subtype C data.
+          Six modular steps — from GenBank download to publication-style figures. The
+          exported run is shown here; rerun these steps in local Streamlit mode.
         </p>
       </div>
 

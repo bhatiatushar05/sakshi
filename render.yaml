@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: hiv-evolution-india
+    env: docker
+    plan: free
+    autoDeploy: true

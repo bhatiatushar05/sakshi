@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { StatsFlow } from "@/components/StatsFlow";
+import { RunMode } from "@/components/RunMode";
 import { PipelineSteps } from "@/components/PipelineSteps";
 import { ResultsSection } from "@/components/ResultsSection";
 import { GeneMap } from "@/components/GeneMap";
@@ -17,6 +18,7 @@ export default function Home() {
       <PresentationBanner />
       <Hero data={data} />
       <StatsFlow data={data} />
+      <RunMode data={data} />
       <PipelineSteps data={data} />
       <ResultsSection data={data} />
       <GeneMap data={data} />

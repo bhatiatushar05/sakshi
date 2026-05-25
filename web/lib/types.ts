@@ -21,6 +21,22 @@ export interface AnalysisData {
     alignmentSequences: number;
     alignmentLength: number;
   };
+  datasetAudit?: {
+    rawCount: number;
+    cleanedCount: number;
+    indiaCount: number;
+    nonIndiaCount: number;
+    unknownYearCount: number;
+    meanAmbiguousFraction: number;
+    locationCounts: Record<string, number>;
+    lengthSummary: {
+      raw_min: number;
+      raw_max: number;
+      cleaned_min: number;
+      cleaned_max: number;
+    };
+    note: string;
+  };
   conservation: { position: number; score: number }[];
   conservedRegions: Region[];
   variableRegions: Region[];

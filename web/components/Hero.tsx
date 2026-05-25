@@ -6,6 +6,9 @@ import type { AnalysisData } from "@/lib/types";
 
 export function Hero({ data }: { data: AnalysisData }) {
   const { stats, meta } = data;
+  const audit = data.datasetAudit;
+  const indiaShare =
+    audit && audit.rawCount ? Math.round((audit.indiaCount / audit.rawCount) * 100) : null;
 
   return (
     <section
@@ -30,12 +33,20 @@ export function Hero({ data }: { data: AnalysisData }) {
         </h1>
 
         <p className="mt-5 text-lg md:text-xl text-muted max-w-2xl leading-relaxed">
-          In-silico analysis of <strong className="text-white font-medium">subtype C</strong>{" "}
-          sequences from Indian isolates — evolutionary patterns, conservation
-          landscapes, and mutation hotspots across{" "}
+          Shareable in-silico report for <strong className="text-white font-medium">HIV-1 subtype C</strong>{" "}
+          sequences returned by the India-focused NCBI query — conservation
+          landscapes, quality checks, and mutation-hotspot screening across{" "}
           <strong className="text-white font-medium">{stats.finalCleaned}</strong> GenBank
           sequences.
         </p>
+
+        {audit ? (
+          <div className="mt-5 max-w-2xl rounded-2xl border border-amber-300/25 bg-amber-300/10 p-4 text-sm leading-relaxed text-amber-50">
+            <strong>Dataset audit:</strong> {audit.indiaCount}/{audit.rawCount} records
+            visibly mention India{indiaShare !== null ? ` (${indiaShare}%)` : ""}. This
+            page is a shareable report; rerun/filter the pipeline in local interactive mode.
+          </div>
+        ) : null}
 
         <div className="mt-8 flex flex-wrap gap-3">
           <a
@@ -50,6 +61,12 @@ export function Hero({ data }: { data: AnalysisData }) {
             className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium text-white hover:border-sky/50 transition-colors"
           >
             How it works
+          </a>
+          <a
+            href="#run"
+            className="inline-flex items-center gap-2 rounded-full border border-mint/30 bg-mint/10 px-6 py-3 text-sm font-medium text-mint hover:border-mint/60 transition-colors"
+          >
+            Run locally
           </a>
         </div>
 
@@ -66,7 +83,7 @@ export function Hero({ data }: { data: AnalysisData }) {
       >
         {[
           {
-            label: "Sequences analyzed",
+            label: "Sequences in report",
             value: stats.finalCleaned,
             icon: Database,
             color: "text-mint",
@@ -84,8 +101,8 @@ export function Hero({ data }: { data: AnalysisData }) {
             color: "text-violet",
           },
           {
-            label: "Data source",
-            value: "NCBI",
+            label: "India-described",
+            value: audit ? `${audit.indiaCount}/${audit.rawCount}` : "NCBI",
             icon: GlobeIcon,
             color: "text-coral",
           },
